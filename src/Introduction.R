@@ -26,6 +26,12 @@ if (!require(nycflights13)) {install.packages("nycflights13"); library(nycflight
 #' sentences comprising these verbs, data analysis turns into poetry. In sum,
 #' there is a near-direct translation from intention to code.
 #'
+#' At the heart of the workflow facilitated by `dplyr` is the ` %>% ` operator.
+#' This infix operator performs the following operation: `x %>% f(y)` turns into
+#' `f(x, y)`. Remarkably, this simple operation disentangles even the worst of
+#' nested function compositions and makes the intention of the coder clear (in
+#' an imperative way).
+#'
 #' The data set used in this vignette is the flight departure data from New York
 #' in 2013.
 
@@ -50,15 +56,15 @@ sum(is.na(flights))
 #'
 #' - `summarize()` to summarize a feature vector using functions
 #'
-#' We look at each of these verbs with an example. Notice how no $ signs or ""
-#' obscure the intention. All verbs take a dataframe and return one. No
-#' confusion.
-#'
 #' Another common task that is executed in conjunction with these verbs is the
 #' grouping operation, i.e., selecting a group of rows based on some criterion.
 #' This is achieved by `group_by()`. This powerful function is particularly
-#' helpful in conjunction with summarize as illustrated in the examples that
+#' helpful in conjunction with `summarize()` as illustrated in the examples that
 #' follow.
+#'
+#' We look at each of these verbs with an example. Notice how no `$` signs or
+#' `""` obscure the intention. All verbs take a dataframe and return one. No
+#' confusion.
 #'
 #' In each example we state the intention and follow it with code that executes
 #' that intention.
@@ -112,8 +118,3 @@ flights %>% group_by(dest) %>%
 #' to deploy a `group_by()`. In my experience, logic using `group_by`'s are
 #' readable only when the grouping is on one or two variables. Groups involving
 #' multiple variables are difficult to parse.
-
-
-
-
-

@@ -34,10 +34,10 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ##  [1] bindrcpp_0.2       nycflights13_0.2.2 forcats_0.2.0     
-    ##  [4] stringr_1.2.0      dplyr_0.7.4        purrr_0.2.4       
-    ##  [7] readr_1.1.1        tidyr_0.8.0        tibble_1.4.2      
-    ## [10] ggplot2_2.2.1      tidyverse_1.2.1   
+    ##  [1] rmarkdown_1.8      bindrcpp_0.2       nycflights13_0.2.2
+    ##  [4] forcats_0.2.0      stringr_1.2.0      dplyr_0.7.4       
+    ##  [7] purrr_0.2.4        readr_1.1.1        tidyr_0.8.0       
+    ## [10] tibble_1.4.2       ggplot2_2.2.1      tidyverse_1.2.1   
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] reshape2_1.4.3   haven_1.1.1      lattice_0.20-35  colorspace_1.3-2
@@ -51,14 +51,16 @@ sessionInfo()
     ## [33] digest_0.6.15    stringi_1.1.6    grid_3.4.3       rprojroot_1.3-2 
     ## [37] cli_1.0.0        tools_3.4.3      magrittr_1.5     lazyeval_0.2.1  
     ## [41] crayon_1.3.4     pkgconfig_2.0.1  Matrix_1.2-12    xml2_1.2.0      
-    ## [45] lubridate_1.7.1  assertthat_0.2.0 rmarkdown_1.8    httr_1.3.1      
-    ## [49] rstudioapi_0.7   R6_2.2.2         nlme_3.1-131     compiler_3.4.3
+    ## [45] lubridate_1.7.1  assertthat_0.2.0 httr_1.3.1       rstudioapi_0.7  
+    ## [49] R6_2.2.2         nlme_3.1-131     compiler_3.4.3
 
 ``` r
 if (!require(nycflights13)) {install.packages("nycflights13"); library(nycflights13)}
 ```
 
 The tidyverse presents a small vocabulary of verbs to execute most data-related tasks in a time-efficient manner. By composing data tasks as sentences comprising these verbs, data analysis turns into poetry. In sum, there is a near-direct translation from intention to code.
+
+At the heart of the workflow facilitated by `dplyr` is the `%>%` operator. This infix operator performs the following operation: `x %>% f(y)` turns into `f(x, y)`. Remarkably, this simple operation disentangles even the worst of nested function compositions and makes the intention of the coder clear (in an imperative way).
 
 The data set used in this vignette is the flight departure data from New York in 2013.
 
@@ -110,9 +112,9 @@ They capture conditional execution of common data manipulations:
 
 -   `summarize()` to summarize a feature vector using functions
 
-We look at each of these verbs with an example. Notice how no $ signs or "" obscure the intention. All verbs take a dataframe and return one. No confusion.
+Another common task that is executed in conjunction with these verbs is the grouping operation, i.e., selecting a group of rows based on some criterion. This is achieved by `group_by()`. This powerful function is particularly helpful in conjunction with `summarize()` as illustrated in the examples that follow.
 
-Another common task that is executed in conjunction with these verbs is the grouping operation, i.e., selecting a group of rows based on some criterion. This is achieved by `group_by()`. This powerful function is particularly helpful in conjunction with summarize as illustrated in the examples that follow.
+We look at each of these verbs with an example. Notice how no `$` signs or `""` obscure the intention. All verbs take a dataframe and return one. No confusion.
 
 In each example we state the intention and follow it with code that executes that intention.
 

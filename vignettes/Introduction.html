@@ -51,10 +51,10 @@ knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="k
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] bindrcpp_0.2       nycflights13_0.2.2 forcats_0.2.0     
-##  [4] stringr_1.2.0      dplyr_0.7.4        purrr_0.2.4       
-##  [7] readr_1.1.1        tidyr_0.8.0        tibble_1.4.2      
-## [10] ggplot2_2.2.1      tidyverse_1.2.1   
+##  [1] rmarkdown_1.8      bindrcpp_0.2       nycflights13_0.2.2
+##  [4] forcats_0.2.0      stringr_1.2.0      dplyr_0.7.4       
+##  [7] purrr_0.2.4        readr_1.1.1        tidyr_0.8.0       
+## [10] tibble_1.4.2       ggplot2_2.2.1      tidyverse_1.2.1   
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] reshape2_1.4.3   haven_1.1.1      lattice_0.20-35  colorspace_1.3-2
@@ -68,10 +68,11 @@ knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="k
 ## [33] digest_0.6.15    stringi_1.1.6    grid_3.4.3       rprojroot_1.3-2 
 ## [37] cli_1.0.0        tools_3.4.3      magrittr_1.5     lazyeval_0.2.1  
 ## [41] crayon_1.3.4     pkgconfig_2.0.1  Matrix_1.2-12    xml2_1.2.0      
-## [45] lubridate_1.7.1  assertthat_0.2.0 rmarkdown_1.8    httr_1.3.1      
-## [49] rstudioapi_0.7   R6_2.2.2         nlme_3.1-131     compiler_3.4.3</code></pre>
+## [45] lubridate_1.7.1  assertthat_0.2.0 httr_1.3.1       rstudioapi_0.7  
+## [49] R6_2.2.2         nlme_3.1-131     compiler_3.4.3</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(nycflights13)) {<span class="kw">install.packages</span>(<span class="st">&quot;nycflights13&quot;</span>); <span class="kw">library</span>(nycflights13)}</code></pre></div>
 <p>The tidyverse presents a small vocabulary of verbs to execute most data-related tasks in a time-efficient manner. By composing data tasks as sentences comprising these verbs, data analysis turns into poetry. In sum, there is a near-direct translation from intention to code.</p>
+<p>At the heart of the workflow facilitated by <code>dplyr</code> is the <code>%&gt;%</code> operator. This infix operator performs the following operation: <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. Remarkably, this simple operation disentangles even the worst of nested function compositions and makes the intention of the coder clear (in an imperative way).</p>
 <p>The data set used in this vignette is the flight departure data from New York in 2013.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(flights)</code></pre></div>
 <pre><code>## Observations: 336,776
@@ -107,8 +108,8 @@ knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="k
 <li><p><code>mutate()</code> to add functions of existing features</p></li>
 <li><p><code>summarize()</code> to summarize a feature vector using functions</p></li>
 </ul>
-<p>We look at each of these verbs with an example. Notice how no $ signs or &quot;&quot; obscure the intention. All verbs take a dataframe and return one. No confusion.</p>
-<p>Another common task that is executed in conjunction with these verbs is the grouping operation, i.e., selecting a group of rows based on some criterion. This is achieved by <code>group_by()</code>. This powerful function is particularly helpful in conjunction with summarize as illustrated in the examples that follow.</p>
+<p>Another common task that is executed in conjunction with these verbs is the grouping operation, i.e., selecting a group of rows based on some criterion. This is achieved by <code>group_by()</code>. This powerful function is particularly helpful in conjunction with <code>summarize()</code> as illustrated in the examples that follow.</p>
+<p>We look at each of these verbs with an example. Notice how no <code>$</code> signs or <code>&quot;&quot;</code> obscure the intention. All verbs take a dataframe and return one. No confusion.</p>
 <p>In each example we state the intention and follow it with code that executes that intention.</p>
 <p><em>Example 1</em> Find all flights that departed on 1st January</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(month <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, day <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</code></pre></div>
