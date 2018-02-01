@@ -58,18 +58,17 @@ knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="k
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] reshape2_1.4.3   haven_1.1.1      lattice_0.20-35  colorspace_1.3-2
-##  [5] htmltools_0.3.6  mgcv_1.8-22      yaml_2.1.16      utf8_1.1.3      
-##  [9] rlang_0.1.6      pillar_1.1.0     foreign_0.8-69   glue_1.2.0      
-## [13] modelr_0.1.1     readxl_1.0.0     bindr_0.1        plyr_1.8.4      
-## [17] munsell_0.4.3    gtable_0.2.0     cellranger_1.1.0 rvest_0.3.2     
-## [21] psych_1.7.8      evaluate_0.10.1  labeling_0.3     knitr_1.19      
-## [25] parallel_3.4.3   broom_0.4.3      Rcpp_0.12.15     scales_0.5.0    
-## [29] backports_1.1.2  jsonlite_1.5     mnormt_1.5-5     hms_0.4.1       
-## [33] digest_0.6.15    stringi_1.1.6    grid_3.4.3       rprojroot_1.3-2 
-## [37] cli_1.0.0        tools_3.4.3      magrittr_1.5     lazyeval_0.2.1  
-## [41] crayon_1.3.4     pkgconfig_2.0.1  Matrix_1.2-12    xml2_1.2.0      
-## [45] lubridate_1.7.1  assertthat_0.2.0 httr_1.3.1       rstudioapi_0.7  
-## [49] R6_2.2.2         nlme_3.1-131     compiler_3.4.3</code></pre>
+##  [5] htmltools_0.3.6  yaml_2.1.16      utf8_1.1.3       rlang_0.1.6     
+##  [9] pillar_1.1.0     foreign_0.8-69   glue_1.2.0       modelr_0.1.1    
+## [13] readxl_1.0.0     bindr_0.1        plyr_1.8.4       munsell_0.4.3   
+## [17] gtable_0.2.0     cellranger_1.1.0 rvest_0.3.2      evaluate_0.10.1 
+## [21] psych_1.7.8      knitr_1.19       parallel_3.4.3   broom_0.4.3     
+## [25] Rcpp_0.12.15     scales_0.5.0     backports_1.1.2  jsonlite_1.5    
+## [29] mnormt_1.5-5     hms_0.4.1        digest_0.6.15    stringi_1.1.6   
+## [33] grid_3.4.3       rprojroot_1.3-2  cli_1.0.0        tools_3.4.3     
+## [37] magrittr_1.5     lazyeval_0.2.1   crayon_1.3.4     pkgconfig_2.0.1 
+## [41] xml2_1.2.0       lubridate_1.7.1  assertthat_0.2.0 httr_1.3.1      
+## [45] rstudioapi_0.7   R6_2.2.2         nlme_3.1-131     compiler_3.4.3</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(nycflights13)) {<span class="kw">install.packages</span>(<span class="st">&quot;nycflights13&quot;</span>); <span class="kw">library</span>(nycflights13)}</code></pre></div>
 <p>The tidyverse presents a small vocabulary of verbs to execute most data-related tasks in a time-efficient manner. By composing data tasks as sentences comprising these verbs, data analysis turns into poetry. In sum, there is a near-direct translation from intention to code.</p>
 <p>At the heart of the workflow facilitated by <code>dplyr</code> is the <code>%&gt;%</code> operator. This infix operator performs the following operation: <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. Remarkably, this simple operation disentangles even the worst of nested function compositions and makes the intention of the coder clear (in an imperative way).</p>

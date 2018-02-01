@@ -12,4 +12,4 @@ How strongly do we hold on to the noodle of weird symbols that is R?
 
 **Tutorial list**
 
-- From the package documentation: [Introduction](vignettes/Introduction.md)
+- From the package documentation: [Introduction](vignettes/Introduction.md), [Joins](vignettes/Understanding-Joins.md)
