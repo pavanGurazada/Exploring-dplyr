@@ -10,6 +10,7 @@ The battle is between the following two workflows:
 
 How strongly do we hold on to the noodle of weird symbols that is R? 
 
-**Tutorial list**
+**What is in this repo?**
 
 - From the package documentation: [Introduction](vignettes/Introduction.md), [Joins](vignettes/Understanding-Joins.md)
+- [From data to summaries](vignettes/Summarizing.md)
