@@ -14,3 +14,4 @@ How strongly do we hold on to the noodle of weird symbols that is R?
 
 - From the package documentation: [Introduction](vignettes/Introduction.md), [Joins](vignettes/Understanding-Joins.md)
 - [From data to summaries](vignettes/Summarizing.md)
+- [Programming with `dplyr`](vignettes/Programming.md)
