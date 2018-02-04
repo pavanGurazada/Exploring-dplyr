@@ -108,7 +108,9 @@ makeSummary <-  function(df, groupingVariable) {
 # makeSummary(df, "g2") # Throws up error on the groupingVariable
 
 #' Clearly, `group_by()` does not evaulate its input. For this code to work, We
-#' need to do two things: 1. Quote the `groupingVariable` manually. We saw
+#' need to do two things: 
+#' 
+#' 1. Quote the `groupingVariable` manually. We saw
 #' earlier that one way to make this happen is to use the formula operator `~`.
 #' The `tidyverse` recommendation to accomplish this is to use the `quo()`
 #' function

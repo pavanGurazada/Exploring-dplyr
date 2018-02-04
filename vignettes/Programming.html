@@ -114,8 +114,8 @@ df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group
 <pre><code>## # A tibble: 2 x 2
 ##      g1  Mean
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  1.00  3.00
-## 2  2.00  3.00</code></pre>
+## 1  1.00  4.00
+## 2  2.00  2.33</code></pre>
 <p>We might want to avoid duplication of this by writing up the following function</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">makeSummary &lt;-<span class="st">  </span><span class="cf">function</span>(df, groupingVariable) {
   df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(groupingVariable) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -124,9 +124,10 @@ df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group
 
 <span class="co"># makeSummary(df, g1) # Throws up error on the groupingVariable</span>
 <span class="co"># makeSummary(df, &quot;g2&quot;) # Throws up error on the groupingVariable</span></code></pre></div>
-<p>Clearly, <code>group_by()</code> does not evaulate its input. For this code to work, We need to do two things: 1. Quote the <code>groupingVariable</code> manually. We saw earlier that one way to make this happen is to use the formula operator <code>~</code>. The <code>tidyverse</code> recommendation to accomplish this is to use the <code>quo()</code> function</p>
+<p>Clearly, <code>group_by()</code> does not evaulate its input. For this code to work, We need to do two things:</p>
 <ol>
-<li>Tell <code>group_by()</code> to stop quoting the input <code>groupingVariable</code>. We do this by using <code>!!</code></li>
+<li><p>Quote the <code>groupingVariable</code> manually. We saw earlier that one way to make this happen is to use the formula operator <code>~</code>. The <code>tidyverse</code> recommendation to accomplish this is to use the <code>quo()</code> function</p></li>
+<li><p>Tell <code>group_by()</code> to stop quoting the input <code>groupingVariable</code>. We do this by using <code>!!</code></p></li>
 </ol>
 <p>With these changes, the function definition now becomes:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">makeSummary &lt;-<span class="st"> </span><span class="cf">function</span>(df, groupingVariable) {
@@ -138,8 +139,8 @@ df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group
 <pre><code>## # A tibble: 2 x 2
 ##      g1  Mean
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  1.00  3.00
-## 2  2.00  3.00</code></pre>
+## 1  1.00  4.00
+## 2  2.00  2.33</code></pre>
 <p>The usage of <code>quo</code> as a function argument is still ugly.</p>
 <p>The resolution of such ugliness is by using the scoped variants of the verbs They take in the column names as strings and allow the programmer to avoid the <code>quo()</code> and <code>!!</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">makeSummary &lt;-<span class="st"> </span><span class="cf">function</span>(df, groupingVariable) {
@@ -151,14 +152,14 @@ df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group
 <pre><code>## # A tibble: 2 x 2
 ##      g1  Mean
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  1.00  3.00
-## 2  2.00  3.00</code></pre>
+## 1  1.00  4.00
+## 2  2.00  2.33</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">makeSummary</span>(df, <span class="st">&quot;g2&quot;</span>)</code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##      g2  Mean
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  1.00  4.00
-## 2  2.00  1.50</code></pre>
+## 1  1.00  3.33
+## 2  2.00  2.50</code></pre>
 <p>Moral: Scoped versions of the verbs are a real life-saver</p>
 
 </body>

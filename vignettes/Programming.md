@@ -157,8 +157,8 @@ df %>% group_by(g1) %>%
     ## # A tibble: 2 x 2
     ##      g1  Mean
     ##   <dbl> <dbl>
-    ## 1  1.00  3.00
-    ## 2  2.00  3.00
+    ## 1  1.00  4.00
+    ## 2  2.00  2.33
 
 We might want to avoid duplication of this by writing up the following function
 
@@ -172,9 +172,11 @@ makeSummary <-  function(df, groupingVariable) {
 # makeSummary(df, "g2") # Throws up error on the groupingVariable
 ```
 
-Clearly, `group_by()` does not evaulate its input. For this code to work, We need to do two things: 1. Quote the `groupingVariable` manually. We saw earlier that one way to make this happen is to use the formula operator `~`. The `tidyverse` recommendation to accomplish this is to use the `quo()` function
+Clearly, `group_by()` does not evaulate its input. For this code to work, We need to do two things:
 
-1.  Tell `group_by()` to stop quoting the input `groupingVariable`. We do this by using `!!`
+1.  Quote the `groupingVariable` manually. We saw earlier that one way to make this happen is to use the formula operator `~`. The `tidyverse` recommendation to accomplish this is to use the `quo()` function
+
+2.  Tell `group_by()` to stop quoting the input `groupingVariable`. We do this by using `!!`
 
 With these changes, the function definition now becomes:
 
@@ -190,8 +192,8 @@ makeSummary(df, quo(g1))
     ## # A tibble: 2 x 2
     ##      g1  Mean
     ##   <dbl> <dbl>
-    ## 1  1.00  3.00
-    ## 2  2.00  3.00
+    ## 1  1.00  4.00
+    ## 2  2.00  2.33
 
 The usage of `quo` as a function argument is still ugly.
 
@@ -209,8 +211,8 @@ makeSummary(df, "g1")
     ## # A tibble: 2 x 2
     ##      g1  Mean
     ##   <dbl> <dbl>
-    ## 1  1.00  3.00
-    ## 2  2.00  3.00
+    ## 1  1.00  4.00
+    ## 2  2.00  2.33
 
 ``` r
 makeSummary(df, "g2")
@@ -219,7 +221,7 @@ makeSummary(df, "g2")
     ## # A tibble: 2 x 2
     ##      g2  Mean
     ##   <dbl> <dbl>
-    ## 1  1.00  4.00
-    ## 2  2.00  1.50
+    ## 1  1.00  3.33
+    ## 2  2.00  2.50
 
 Moral: Scoped versions of the verbs are a real life-saver
