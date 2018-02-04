@@ -60,11 +60,13 @@ sum(is.na(flights))
 #' grouping operation, i.e., selecting a group of rows based on some criterion.
 #' This is achieved by `group_by()`. This powerful function is particularly
 #' helpful in conjunction with `summarize()` as illustrated in the examples that
-#' follow.
+#' follow. We have a separate script on `summarize()` illustrating the nuances
+#' on this verb. 
 #'
 #' We look at each of these verbs with an example. Notice how no `$` signs or
 #' `""` obscure the intention. All verbs take a dataframe and return one. No
-#' confusion.
+#' confusion. There are two kinds of semantics ("verb meanings") that need close
+#' attention - 'select' and 'mutate'. 
 #'
 #' In each example we state the intention and follow it with code that executes
 #' that intention.
