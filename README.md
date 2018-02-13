@@ -12,6 +12,7 @@ How strongly do we hold on to the noodle of weird symbols that is R?
 
 **What is in this repo?**
 
-- From the package documentation: [Introduction](vignettes/Introduction.md), [Joins](vignettes/Understanding-Joins.md)
-- [From data to summaries](vignettes/Summarizing.md)
-- [Programming with `dplyr`](vignettes/Programming.md)
+- From the package documentation: [Introduction](vignettes/Introduction.md), [Joins](Understanding-Joins.md)
+- [From data to summaries](Summarizing.md)
+- [Programming with `dplyr`](Programming.md)
+- [Pandas-1](Exploring-Modern-Pandas-1.ipynb)
