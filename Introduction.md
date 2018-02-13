@@ -46,7 +46,7 @@ sessionInfo()
     ## [13] readxl_1.0.0     bindr_0.1        plyr_1.8.4       munsell_0.4.3   
     ## [17] gtable_0.2.0     cellranger_1.1.0 rvest_0.3.2      evaluate_0.10.1 
     ## [21] psych_1.7.8      knitr_1.19       parallel_3.4.3   broom_0.4.3     
-    ## [25] Rcpp_0.12.15     scales_0.5.0     backports_1.1.2  jsonlite_1.5    
+    ## [25] Rcpp_0.12.15     backports_1.1.2  scales_0.5.0     jsonlite_1.5    
     ## [29] mnormt_1.5-5     hms_0.4.1        digest_0.6.15    stringi_1.1.6   
     ## [33] grid_3.4.3       rprojroot_1.3-2  cli_1.0.0        tools_3.4.3     
     ## [37] magrittr_1.5     lazyeval_0.2.1   crayon_1.3.4     pkgconfig_2.0.1 
@@ -111,9 +111,9 @@ They capture conditional execution of common data manipulations:
 
 -   `summarize()` to summarize a feature vector using functions
 
-Another common task that is executed in conjunction with these verbs is the grouping operation, i.e., selecting a group of rows based on some criterion. This is achieved by `group_by()`. This powerful function is particularly helpful in conjunction with `summarize()` as illustrated in the examples that follow.
+Another common task that is executed in conjunction with these verbs is the grouping operation, i.e., selecting a group of rows based on some criterion. This is achieved by `group_by()`. This powerful function is particularly helpful in conjunction with `summarize()` as illustrated in the examples that follow. We have a separate script on `summarize()` illustrating the nuances on this verb.
 
-We look at each of these verbs with an example. Notice how no `$` signs or `""` obscure the intention. All verbs take a dataframe and return one. No confusion.
+We look at each of these verbs with an example. Notice how no `$` signs or `""` obscure the intention. All verbs take a dataframe and return one. No confusion. There are two kinds of semantics ("verb meanings") that need close attention - 'select' and 'mutate'.
 
 In each example we state the intention and follow it with code that executes that intention.
 
@@ -223,7 +223,7 @@ ggplot(delay, aes(x = avg_dist, y = avg_delay)) +
 
     ## `geom_smooth()` using method = 'gam'
 
-![](C:\Users\kimmcodxb\Documents\GitHub\Exploring-dplyr\vignettes\Introduction_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](Introduction_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 *Example 6* Find the number of planes and number of flights that go to each possible destination
 
