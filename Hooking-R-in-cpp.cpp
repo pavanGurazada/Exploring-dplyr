@@ -8,16 +8,19 @@ using namespace Rcpp;
 using arma::sp_mat;
 
 // [[Rcpp::export]]
-sp_mat call_functions(int n, double p) {
+sp_mat adj_mat(int n, double p) {
   
-  Environment graph("package: igraph");
-  Function game_er = graph["erdos.renyi.game"];
-  Function get_adjacency = graph["get.adjacency"];
+  Environment igraph("package:igraph");
+  Function game_er = igraph["erdos.renyi.game"];
+  Function get_adjacency = igraph["get.adjacency"];
   
-  List g = graph(Named("n", n), Named("p", p));
+  List g = game_er(Named("n", n), Named("p", p));
   
-  sp_mat A = 
+  NumericMatrix A_m = get_adjacency(Named("g", g));
   
+  sp_mat A = as<sp_mat>(A_m);
+  
+  return A;
 }
 
 
@@ -25,5 +28,5 @@ sp_mat call_functions(int n, double p) {
 set.seed(20130810)
 library(igraph)
 
-call_functions(100, 0.5, igraph::erdos.renyi.game, igraph::get.adjacency)
+adj_mat(100, 0.5)
 */
