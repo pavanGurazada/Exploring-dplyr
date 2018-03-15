@@ -14,9 +14,9 @@ sp_mat adj_mat(int n, double p) {
   Function game_er = igraph["erdos.renyi.game"];
   Function get_adjacency = igraph["get.adjacency"];
   
-  List g = game_er(Named("n", n), Named("p", p));
+  SEXP g = game_er(Named("n", n), Named("p", p));
   
-  NumericMatrix A_m = get_adjacency(Named("g", g));
+  S4 A_m = get_adjacency(Named("g", g));
   
   sp_mat A = as<sp_mat>(A_m);
   
